@@ -9,7 +9,7 @@ class profile(models.Model):
     user               = models.OneToOneField(User, unique=True, null=False, db_index=True, on_delete=models.CASCADE )
 
 
-    student_id                      = models.IntegerField( blank=False, null=True, help_text='enter your student id here')
+    student_id                     = models.IntegerField( blank=False, null=True, help_text='enter your student id here')
     year_of_graduation              = models.IntegerField(null=False, blank=False)
     date_of_birth                   = models.DateField(blank=False, null=False)
     technical_program               = models.CharField(max_length=255, blank=False, null=False)

@@ -5,7 +5,10 @@ from django.contrib.auth import (
     login,
     logout
 )
-from .forms import UserLoginForm, StudentProfileForm, UserForm
+from .forms import UserLoginForm, StudentProfileForm
+from django.contrib.auth.decorators import login_required
+from django.urls import reverse    
+from . models import profile
 
 
 def login_view(request):
@@ -19,23 +22,45 @@ def login_view(request):
         login(request, user)
         if next:
             return redirect(next)
-        return redirect('home')    
+        return redirect('profile')    
     context = {
         'form': form,
     }    
     return render(request,'registration/login.html', context)
 
+def Logout_view(request):
+    logout(request)
+    return redirect('login')
 
-
-
-from django.contrib.auth.decorators import login_required
-@login_required
-def home(request):
-    return render(request, 'home.html')
-
-
-from django.urls import reverse
 
 @login_required
-def Profile_view():
+def Profile_view(request):
+    if (request.user.is_staff):
+        stud = request.user.profile
+        
+        context = {
+            'stud': stud
+        }
+
+    return render(request, 'student/profileView.html', context)   
     
+@login_required
+def Profile_Edit_view(request):
+       
+    profile_instance = request.user.profile
+    
+    form = StudentProfileForm(request.POST or None, request.FILES, instance=profile_instance)
+
+    if form.is_valid():
+        form.save()
+
+    context = {
+       'form': form
+    }  
+
+    return render(request, 'student/profileEditView.html', context)   
+
+
+
+
+

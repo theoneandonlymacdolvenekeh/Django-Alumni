@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '08d6ag!+x90y+0trs7=^so%h4c&vw^-igfq9+i_7f-*!)xkhl@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
@@ -133,4 +133,3 @@ DATE_INPUT_FORMATS=[
 
 STATIC_URL = '/static/'
 
-# LOGIN_REDIRECT_URL = '/pinkslip/'

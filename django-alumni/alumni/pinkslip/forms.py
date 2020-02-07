@@ -41,26 +41,12 @@ class UserLoginForm(forms.Form):
         return super(UserLoginForm, self).clean(*args, **kwargs)    
 
 
+
+
 from django.contrib.auth.models import User
 from django.forms import ModelForm
 from .models import profile
-
-
-
-# class User form
-# Class profile form
-# In templates {% user_form %}
-# If not is_staff: {% studentForm %}
-class UserForm(ModelForm):
-    class Meta:
-        model = User
-        fields = (
-            'first_name', 
-            'last_name', 
-            'email'
-        )
-
-class StudentProfileForm():
+class StudentProfileForm(forms.ModelForm):
 
     class Meta:
         model = profile
