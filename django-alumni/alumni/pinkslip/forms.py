@@ -54,3 +54,16 @@ class StudentProfileForm(forms.ModelForm):
         exclude = (
             'user',
         )
+
+# class User form
+# Class profile form
+# In templates {% user_form %}
+# If not is_staff: {% studentForm %}
+class UserForm(ModelForm):
+    class Meta:
+        model = User
+        fields = (
+            'first_name', 
+            'last_name', 
+            'email'
+        )        

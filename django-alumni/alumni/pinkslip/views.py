@@ -1,11 +1,11 @@
-from django.shortcuts import render, redirect  
+from django.shortcuts import render, redirect,  get_object_or_404
 from django.contrib.auth import (
     authenticate,
     get_user_model,
     login,
     logout
 )
-from .forms import UserLoginForm, StudentProfileForm
+from .forms import UserLoginForm, StudentProfileForm, UserForm
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse    
 from . models import profile
@@ -22,7 +22,7 @@ def login_view(request):
         login(request, user)
         if next:
             return redirect(next)
-        return redirect('profile')    
+        return redirect('profile_edit')    
     context = {
         'form': form,
     }    
@@ -35,31 +35,42 @@ def Logout_view(request):
 
 @login_required
 def Profile_view(request):
-    if (request.user.is_staff):
-        stud = request.user.profile
-        
+    #\\\\\\\\\\\\\\\\
+        suser = request.user
         context = {
-            'stud': stud
+            'stud': suser
         }
-
-    return render(request, 'student/profileView.html', context)   
+        return render (request, 'admin/adminView.html', context)
     
 @login_required
 def Profile_Edit_view(request):
        
-    profile_instance = request.user.profile
-    
-    form = StudentProfileForm(request.POST or None, request.FILES, instance=profile_instance)
+    if request.user.is_staff == False:
+        profile_instance = get_object_or_404(profile, pk=request.user.profile.id)
 
-    if form.is_valid():
-        form.save()
+        stud = request.user.profile
+        last = request.user.last_login
 
-    context = {
-       'form': form
-    }  
+        
+        Studform = StudentProfileForm(request.POST, request.FILES, instance=profile_instance)
+        user_form = UserForm(request.POST, instance=request.user) 
 
-    return render(request, 'student/profileEditView.html', context)   
+        if Studform.is_valid() and user_form.is_valid():
+            Studform.save()
+            user_form.save()
+            return redirect('profile')
+       
 
+        context = {
+            'Studform': Studform,
+            'last': last,
+            'stud': stud,
+            'user_form': user_form
+        }      
+        return render (request, 'student/profileEditView.html', context)
+
+    else:
+        return redirect('profile')
 
 
 
