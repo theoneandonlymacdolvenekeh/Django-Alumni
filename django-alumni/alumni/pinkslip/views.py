@@ -8,7 +8,7 @@ from django.contrib.auth import (
 from .forms import UserLoginForm, StudentProfileForm, UserForm
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse    
-from . models import profile
+from . models import profile, User
 
 
 def login_view(request):
@@ -22,7 +22,7 @@ def login_view(request):
         login(request, user)
         if next:
             return redirect(next)
-        return redirect('profile_edit')    
+        return redirect('profile')    
     context = {
         'form': form,
     }    
@@ -34,7 +34,7 @@ def Logout_view(request):
 
 
 @login_required
-def Profile_view(request):
+def class_view(request):
     #\\\\\\\\\\\\\\\\
         suser = request.user
         context = {
@@ -48,30 +48,45 @@ def Profile_Edit_view(request):
     if request.user.is_staff == False:
         profile_instance = get_object_or_404(profile, pk=request.user.profile.id)
 
-        stud = request.user.profile
-        last = request.user.last_login
 
         
         Studform = StudentProfileForm(request.POST, request.FILES, instance=profile_instance)
         user_form = UserForm(request.POST, instance=request.user) 
-
-        if Studform.is_valid() and user_form.is_valid():
-            Studform.save()
-            user_form.save()
-            return redirect('profile')
-       
+        if request.method == 'POST':
+            if Studform.is_valid() and user_form.is_valid():
+                Studform.save()
+                user_form.save()
+                return redirect('class')
+        
+        else:
+            Studform = StudentProfileForm(request.POST, request.FILES, instance=profile_instance)
+            user_form = UserForm(request.POST, instance=request.user) 
 
         context = {
             'Studform': Studform,
-            'last': last,
-            'stud': stud,
             'user_form': user_form
         }      
         return render (request, 'student/profileEditView.html', context)
 
     else:
-        return redirect('profile')
+        return redirect('admin')
 
 
+@login_required
+def admin_view(request):
+    if request.user.is_staff:
 
+        users = User.objects.filter(is_staff=False)
+
+        context = {
+
+            'users': users,
+        }
+
+        return render(request, 'admin/adminView.html', context)
+    else:
+        return redirect('profile')    
+
+
+    
 
