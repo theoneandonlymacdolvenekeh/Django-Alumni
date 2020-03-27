@@ -41,19 +41,47 @@ class UserLoginForm(forms.Form):
         return super(UserLoginForm, self).clean(*args, **kwargs)    
 
 
-
+class DataInput(forms.DateInput):
+    input_type= 'date'
 
 from django.contrib.auth.models import User
 from django.forms import ModelForm
 from .models import profile
+from django.forms.widgets import DateInput
+
+
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Layout, Submit, Row, Column
 class StudentProfileForm(forms.ModelForm):
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.layout = Layout (
+            Row(
+                
+                Column('first_name', css_class='form-group col-md-4 mb-0'),
+                Column('last_name', css_class='form-group col-md-4 mb-0'),
+                Column('date_of_birth', css_class='form-group col-md-4 mb-0'),
+                css_class='form-row'
+            ),
+            
+            Submit('submit', 'confirm')
+        )
+
 
     class Meta:
         model = profile
         fields = '__all__'
+        widgets = {
+            'date_of_birth': DateInput(attrs={'type': 'date'}),
+        }
         exclude = (
             'user',
         )
+        
+
+
 
 # class User form
 # Class profile form
