@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'pinkslip',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -133,3 +134,8 @@ DATE_INPUT_FORMATS=[
 
 STATIC_URL = '/static/'
 
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]

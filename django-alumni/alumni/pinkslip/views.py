@@ -53,14 +53,18 @@ def Profile_Edit_view(request):
         Studform = StudentProfileForm(request.POST, request.FILES, instance=profile_instance)
         user_form = UserForm(request.POST, instance=request.user) 
         if request.method == 'POST':
-            if Studform.is_valid() and user_form.is_valid():
-                Studform.save()
+            print(Studform.is_valid())
+            if user_form.is_valid():
                 user_form.save()
+                Studform.save()
+                print('saved')
                 return redirect('class')
+            else:
+                print('cool')    
         
         else:
-            Studform = StudentProfileForm(request.POST, request.FILES, instance=profile_instance)
-            user_form = UserForm(request.POST, instance=request.user) 
+            Studform = StudentProfileForm(instance=profile_instance)
+            user_form = UserForm(instance=request.user) 
 
         context = {
             'Studform': Studform,

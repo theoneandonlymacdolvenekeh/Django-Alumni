@@ -2,34 +2,14 @@
 
 {% block css %}
 <style>
-    .conta{
-        width: 100vw;
-         
-       display: flex;
-        align-content: center;
-       justify-content: center;
-    }
 
     .container {
 
         width: 750px;
-        margin: auto;
-        margin-top: 100px;
         border-radius: 25px;
         border-color:#0066ff;
         border-style: solid;
-        margin: 50px;
-        background-color: white;
-        box-shadow: 0px 20px 20px rgba(0,0,0,0.2),
-                    0px 5px 10px rgba(0,0,0,0.2),    /*long bottom shadow*/ 0px 70px 50px rgba(0,0,0,0.4),/*right shadow*/30px 50px 50px rgba(0,0,0,0.2),
-                    /*left shadow*/
-                    -30px 50px 50px rgba(0,0,0,0.2),
-                    /*right inset*/
-                    inset 20px 0px 60px rgba(0,0,0,0.1),
-                    /*left inset*/
-                    inset -20px 0px 60px rgba(0,0,0,0.1);
-
-
+        margin-top: 50px;
 
     }
     .form-row {
@@ -43,23 +23,21 @@
         text-align: center;
     }
 
-    body{
-        background: radial-gradient(circle,#1a75ff, #66a3ff, #b3d1ff);
-    }
-
    
 
 </style>
 {% endblock %}
 
+{% block title %} Welcome {% endblock %}
 
 
 
 {% block content %}
 {% load crispy_forms_tags %}
-    <div class="conta">
+    <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.iconfinder.com%2Ficons%2F2503402%2Faccount_avatar_blue_man_people_person_profile_icon&psig=AOvVaw2ZaT4V3IxPoWx1bt0VcGd8&ust=1582825343063000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCIjg-Yni7-cCFQAAAAAdAAAAABAP"></img>
+
     <div class="container">
-        <form method="POST" >
+        <form method="POST" novaildate>
             {% csrf_token %}
             
             <div class="form-row">
@@ -187,7 +165,6 @@
             </div>
         </form>
 
-    </div> 
-</div>   
+    </div>    
 
 {% endblock %}
