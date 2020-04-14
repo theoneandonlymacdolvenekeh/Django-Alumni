@@ -16,8 +16,6 @@
         margin: auto;
         margin-top: 100px;
         border-radius: 25px;
-        border-color:#0066ff;
-        border-style: solid;
         margin: 50px;
         background-color: white;
         box-shadow: 0px 20px 20px rgba(0,0,0,0.2),
@@ -44,7 +42,7 @@
     }
 
     body{
-        background: radial-gradient(circle,#1a75ff, #66a3ff, #b3d1ff);
+        background: #cce5ff;
     }
 
    
@@ -59,129 +57,148 @@
 {% load crispy_forms_tags %}
     <div class="conta">
     <div class="container">
-        <form method="POST" >
+        <form method="POST" novalidate>
             {% csrf_token %}
-            
-            <div class="form-row">
-                <div class="form-group col-md-4 mb-0 ">
-                    {{ user_form.first_name |as_crispy_field }}
-                </div>
-                <div class="form-group col-md-4 mb-0">
-                    {{ user_form.last_name |as_crispy_field }}
-                </div>
-                <div class="form-group col-md-4 mb-0">
-                    {{ Studform.date_of_birth |as_crispy_field }}
-                </div>
-                
-            </div>
-
-
-            {{ user_form.email |as_crispy_field }}
-
 
             <div class="form-row">
-                <div lass="form-group col-md-8 mb-0" >
-                    {{ Studform.street_address  |as_crispy_field }}
+                <div class="form-group col-md-4 mb-0">
+                    {{ user_form.first_name|as_crispy_field }}
                 </div>
-                <div class="form-group col-md-8 mb-0">
-                    {{ Studform.apt  |as_crispy_field }}
+                <div class="form-group col-md-4 mb-0">
+                    {{ user_form.last_name|as_crispy_field }}
                 </div>
-            </div>
+                <div class="form-group col-md-4 mb-0">
+                    {{ Studform.date_of_birth|as_crispy_field }}
+                  </div>
+
+            </div>    
 
             <div class="form-row">
                 <div class="form-group col-md-6 mb-0">
-                    {{ Studform.city   |as_crispy_field }}
+                    {{ user_form.email|as_crispy_field }}
                 </div>
-                <div class="form-group col-md-4 mb-0">
-                    {{ Studform.state  |as_crispy_field }}
+                <div class="form-group col-md-6 mb-0">
+                    {{ Studform.phone_number|as_crispy_field }}
+                </div>
+
+            </div> 
+
+            <div class="form-row">
+                <div class="form-group col-md-5 mb-0">
+                    {{ Studform.street_address|as_crispy_field }}
+                </div>
+                <div class="form-group col-md-5 mb-0">
+                    {{ Studform.city|as_crispy_field }}
                 </div>
                 <div class="form-group col-md-2 mb-0">
-                    {{ Studform.zip_code  |as_crispy_field }}
+                    {{ Studform.state|as_crispy_field }}
+                  </div>
+
+            </div> 
+
+
+            <div class="form-row">
+                <div class="form-group col-md-6 mb-0">
+                    {{ Studform.apt|as_crispy_field }}
                 </div>
-            </div>
+                <div class="form-group col-md-6 mb-0">
+                    {{ Studform.zip_code|as_crispy_field }}
+                </div>
+
+            </div> 
 
 
-            <h6>If You are planning to go to work after highschool eneter the following:</h6>
+            <div class="form-row">
+                <div class="form-group col-md-4 mb-0">
+                    {{ Studform.student_id|as_crispy_field }}
+                </div>
+                <div class="form-group col-md-4 mb-0">
+                    {{ Studform.year_of_graduation|as_crispy_field }}
+                </div>
+                <div class="form-group col-md-4 mb-0">
+                    {{ Studform.technical_program|as_crispy_field }}
+                  </div>
+
+            </div> 
+
+            <div class="form-row">
+                <div class="form-group col-md-4 mb-0">
+                    {{ Studform.company_name|as_crispy_field }}
+                </div>
+                <div class="form-group col-md-4 mb-0">
+                    {{ Studform.company_address|as_crispy_field }}
+                </div>
+                <div class="form-group col-md-4 mb-0">
+                    {{ Studform.company_number|as_crispy_field }}
+                  </div>
+
+            </div> 
+
+
+            <div class="form-row">
+                <div class="form-group col-md-6 mb-0">
+                    {{ Studform.job_title|as_crispy_field }}
+                </div>
+                <div class="form-group col-md-6 mb-0">
+                    {{ Studform.wage|as_crispy_field }}
+                </div>
+
+            </div> 
+
+
+
+            <div class="form-row">
+                <div class="form-group col-md-4 mb-0">
+                    {{ Studform.college_major|as_crispy_field }}
+                </div>
+                <div class="form-group col-md-4 mb-0">
+                    {{ Studform.college_year_length|as_crispy_field }}
+                </div>
+                <div class=" col-md-4 mb-0"> 
+                    {{ Studform.college_acceptance_letter|as_crispy_field }}
+                </div>
+
+            </div> 
+
+
+            <div class="form-row">
+                <div class="form-group col-md-6 mb-0">
+                    {{ Studform.military_branch|as_crispy_field }}
+                </div>
+                <div class=" col-md-6 mb-0"> 
+                    {{ Studform.military_letter|as_crispy_field }}
+                </div>
+
+            </div> 
 
 
 
             <div class="form-row">
                 <div class="form-group col-md-6 mb-0">
-                    {{ Studform.company_name   |as_crispy_field }}
-                </div>
-                <div class="form-group col-md-4 mb-0">
-                    {{ Studform.job_title  |as_crispy_field }}
-                </div>
-                <div class="form-group col-md-2 mb-0">
-                    {{ Studform.wage  |as_crispy_field }}
-                </div>
-            </div>
-
-
-            <div class="form-row">
-                <div class="form-group col-md-6 mb-0">
-                    {{ Studform.company_address   |as_crispy_field }}
+                    {{ Studform.A_adams_scholarship|as_crispy_field }}
                 </div>
                 <div class="form-group col-md-6 mb-0">
-                    {{ Studform.company_number  |as_crispy_field }}
+                    {{ Studform.technical_certification|as_crispy_field }}
                 </div>
-            </div>
 
-
-
-            <h6>If you are planning to go to college or post grad technincal highschool enter the following:</h6>
+            </div> 
 
 
             <div class="form-row">
                 <div class="form-group col-md-4 mb-0">
-                    {{ Studform.college_attend   |as_crispy_field }}
+                    {{ Studform.osha_training|as_crispy_field }}
                 </div>
                 <div class="form-group col-md-4 mb-0">
-                    {{ Studform.college_major  |as_crispy_field }}
+                    {{ Studform.osha_number|as_crispy_field }}
                 </div>
                 <div class="form-group col-md-4 mb-0">
-                    {{ Studform.college_year_length  |as_crispy_field }}
-                </div>
-            </div>   
+                    {{ Studform.WTHS_certification|as_crispy_field }}
+                  </div>
+
+            </div> 
+            <div> {{ Studform.future_plans|as_crispy_field }}</div>
             
-            
 
-            <div>
-                {{ Studform.college_acceptance_letter  |as_crispy_field }}
-            </div>
-
-
-
-            <h6>If you are planning on going to the Military enter the following:</h6>
-            <div class="form-row">
-                <div class="form-group col-md-4 mb-0">
-                    {{ Studform.military_branch   |as_crispy_field }}
-                </div>
-            </div>
-
-
-
-            <div>
-                {{ Studform.military_letter |as_crispy_field }}
-            </div>
-
-
-
-            <h6>Have you reseved the following:</h6>
-            <div class="form-row">
-                <div class="form-group col-md-3 mb-0">
-                    {{ Studform.A_adams_scholarship   |as_crispy_field }}
-                </div>
-                <div class="form-group col-md-3 mb-0">
-                    {{ Studform.osha_training |as_crispy_field }}
-                </div>
-                <div class="form-group col-md-3 mb-0">
-                    {{ Studform.WTHS_certification   |as_crispy_field }}
-                </div>
-                <div class="form-group col-md-3 mb-0">
-                    {{ Studform.osha_number   |as_crispy_field }}
-                </div>
-            </div>
             <div class= "row justify-content-center">
                 <button type="submit" class="btn btn-primary" >confirm</button>
             </div>
@@ -191,3 +208,4 @@
 </div>   
 
 {% endblock %}
+ 

@@ -40,7 +40,7 @@ def class_view(request):
         context = {
             'stud': suser
         }
-        return render (request, 'admin/adminView.html', context)
+        return render (request, 'student/classPage.html', context)
     
 @login_required
 def Profile_Edit_view(request):
@@ -50,17 +50,15 @@ def Profile_Edit_view(request):
 
 
         
-        Studform = StudentProfileForm(request.POST, request.FILES, instance=profile_instance)
+        Studform = StudentProfileForm(request.POST, request.FILES, instance=request.user)
         user_form = UserForm(request.POST, instance=request.user) 
         if request.method == 'POST':
             print(Studform.is_valid())
-            if user_form.is_valid():
+            if user_form.is_valid() and Studform.is_valid():
                 user_form.save()
                 Studform.save()
                 print('saved')
                 return redirect('class')
-            else:
-                print('cool')    
         
         else:
             Studform = StudentProfileForm(instance=profile_instance)
@@ -87,7 +85,7 @@ def admin_view(request):
             'users': users,
         }
 
-        return render(request, 'admin/adminView.html', context)
+        return render(request, 'student/classPage.html', context)
     else:
         return redirect('profile')    
 

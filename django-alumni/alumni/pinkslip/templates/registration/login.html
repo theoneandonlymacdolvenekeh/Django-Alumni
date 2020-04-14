@@ -16,22 +16,29 @@
                 * {
                     font-family: 'Lato', sans-serif;
                 }
-                .view-login{
-                    width: 100vw;
-                    height: 100vh;
-                    display: flex;
-                    align-content: center;
-                    justify-content: center;
-
+                body{
+                    padding: 0;
+                    margin: 0;
+                   
+                   
                 }
                 .login-div {
+
+                    position: absolute;
+                    left: 50%;
+                    margin-left: -13.4375em;
+                    top: 50%;
+                    margin-top: -360px;
+
+
+
                     text-align: center;
-                    width:430px;
-                    height: 700px;
-                    padding: 30px;
-                    margin: auto;
-                    margin-top: 100px;
+                    width:26.875em;
+                    height: 720px;                    
                     border-radius: 10px;
+
+
+
                     background: radial-gradient(circle,#0047b3 , #0052cc,#3385ff);
                     box-shadow: 0px 20px 20px rgba(0,0,0,0.2),
                     0px 5px 10px rgba(0,0,0,0.2),    /*long bottom shadow*/ 0px 70px 50px rgba(0,0,0,0.4),/*right shadow*/30px 50px 50px rgba(0,0,0,0.2),
@@ -119,6 +126,16 @@
                     font-size: 20px;
                     font-weight: 300;
                 }
+                
+                 p {
+
+                    color: white;
+                    margin-top:0;
+                    margin-bottom:0;
+                    margin-right:125px;
+                    margin-left:0;
+
+                }
 
 
 
@@ -128,7 +145,7 @@
         <body>
             <form method="POST" novalidate>
                 {% csrf_token %}
-                <div>
+                <div class= "login-center">
                     <div class="login-div">
                         <div class="logo">
                             <picture>
@@ -142,9 +159,11 @@
                         <div class="sub-title">Beta</div>
                         <div class="fields">
                         <div class="username" >
+                            <p>Username</p>
                             {{form.username}}
                         </div>
                         <div class="password">
+                            <p>Password</p>
                             {{ form.password }}
                         </div>
                         </div>

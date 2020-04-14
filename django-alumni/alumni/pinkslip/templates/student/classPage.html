@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -10,38 +11,140 @@
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
             <title></title>
+            <style>
+                .signin-button {
+                    outline: none;
+                    border: none;
+                    cursor: pointer;
+                    width: 100px;
+                    height: 40px;
+                    border-radius: 5px;
+                    font-size: 22px;
+                    font-family: 'Lato', sans-serif;
+                    color:white;
+                    text-align: center;
+                    letter-spacing: 1px;
+                    background: radial-gradient(circle, #24cfaa, #26c5a3, #28bb9c, #29b294, #2aa88d);
+                    box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+                }
+
+                .signin-button:hover {
+                    background: radial-gradient(circle, #2fdbb6, #32d6b3, #32c9a8, #36c7a7, #38bb9f);
+                }
+                .signin-button:active {
+                    background: radial-gradient(circle, #1da88a, #1ea084, #229c82, #23947b, #238d76);
+                }
+
+                .N-bar {
+                
+                    background: radial-gradient(circle,#0047b3 , #0052cc,#3385ff); 
+
+                }
+                
+                body {
+                   
+                    background-color: #cce5ff;
+                    
+                }
+
+
+                .logo {
+                    height: 150px;
+                    width: 150px;
+                    padding: 0;
+                    margin:0;
+                    float: left;
+                    
+                    
+
+                }
+                
+                
+                .b-cont{
+                    background-color: white;
+                    width: 600px;
+                    height: 600px;
+                    border-radius: 25px;
+
+                    position: absolute;
+                    left: 50%;
+                    margin-left: -300px;
+                    top: 60%;
+                    margin-top: -300px;
+
+                    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+
+                    
+
+
+                }
+                .container {
+                   
+                    margin-left: 0;
+                    padding-left: 0;
+                    height: 300px;
+                    margin-right: 0;
+                    padding-right: 0;
+                }
+
+                .c-p {
+                    margin: auto;
+                    color: white;
+                }
+                
+
+
+                
+            
+
+
+            </style>
         </head>
         
         <body>
-            <h1>{{last}}</h1>
-            <ul>
-                <li> {{stud.student_id}}   </li>           
-                <li>{{stud.year_of_graduation}} </li>       
-                <li> {{stud.date_of_birth}}  </li>                
-                <li> {{stud.technical_program}}   </li>            
-                <li>{{stud.street_address}}  </li>                
-                <li>{{stud.city}}           </li>                 
-                <li>{{stud.apt}}       </li>                     
-                <li>{{stud.state}}      </li>                    
-                <li>{{stud.zip_code}}    </li>                    
-                <li>{{stud.phone_number}} </li>                   
-                <li>{{stud.company_name}}  </li>                  
-                <li>{{stud.company_adddress}}  </li>              
-                <li>{{stud.job_title}}    </li>                   
-                <li>{{stud.wage}}          </li>                  
-                <li>{{stud.college_acceptance_letter}}       </li>
-                <li>{{stud.college_attend}}             </li>     
-                <li>{{stud.college_year_lenght}}       </li>      
-                <li>{{stud.military_branch}}            </li>     
-                <li>{{stud.military_letter}}              </li>
-                <li>{{stud.A_adams_scholarship}}          </li>  
-                <li>{{stud.technical_certification}} </li>        
-                <li>{{stud.osha_training}}                   
-                <li>{{stud.osha_number}}             </li>        
-                <li>{{stud.WTHS_certification}} </li>             
-                <li>{{stud.future_plans}} </li>       
 
-                </ul>    
+            
+            <nav class="navbar navbar-expand-lg navbar-dark N-bar static-top">
+                <div class="container">
+                    <div class="navbar-brand logo">
+                        <picture>
+                            <source srcset="{% static 'pinkslip/image/school-seal-reverse.svg' %}"> 
+
+                            <img src="{% static 'pinkslip/image/school-seal-reverse.png' %}" alt="My image">
+                        </picture>
+                        
+                    </div>
+
+                    <h1 class="c-p">ALUMNI</h1>
+
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                          <a class="nav-link" href="#">Home
+                                <span class="sr-only">(current)</span>
+                              </a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                        </li>
+                        
+                      </ul>
+                  
+                </div>
+              </nav>
+              
+              
+            <div class="b-cont">
+
+                <div class= ".loader"></div>
+
+            </div>
+              
+
+
         </body>
         
         </html>

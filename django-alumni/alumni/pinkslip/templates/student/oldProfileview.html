@@ -40,131 +40,37 @@
         <form method="POST" novaildate>
             {% csrf_token %}
             
-            <div class="form-row">
-                <div class="form-group col-md-4 mb-0 ">
-                    {{ user_form.first_name |as_crispy_field }}
-                </div>
-                <div class="form-group col-md-4 mb-0">
-                    {{ user_form.last_name |as_crispy_field }}
-                </div>
-                <div class="form-group col-md-4 mb-0">
-                    {{ Studform.date_of_birth |as_crispy_field }}
-                </div>
-                
-            </div>
-
-
-            {{ user_form.email |as_crispy_field }}
-
-
-            <div class="form-row">
-                <div lass="form-group col-md-8 mb-0" >
-                    {{ Studform.street_address  |as_crispy_field }}
-                </div>
-                <div class="form-group col-md-8 mb-0">
-                    {{ Studform.apt  |as_crispy_field }}
-                </div>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group col-md-6 mb-0">
-                    {{ Studform.city   |as_crispy_field }}
-                </div>
-                <div class="form-group col-md-4 mb-0">
-                    {{ Studform.state  |as_crispy_field }}
-                </div>
-                <div class="form-group col-md-2 mb-0">
-                    {{ Studform.zip_code  |as_crispy_field }}
-                </div>
-            </div>
-
-
-            <h6>If You are planning to go to work after highschool eneter the following:</h6>
-
-
-
-            <div class="form-row">
-                <div class="form-group col-md-6 mb-0">
-                    {{ Studform.company_name   |as_crispy_field }}
-                </div>
-                <div class="form-group col-md-4 mb-0">
-                    {{ Studform.job_title  |as_crispy_field }}
-                </div>
-                <div class="form-group col-md-2 mb-0">
-                    {{ Studform.wage  |as_crispy_field }}
-                </div>
-            </div>
-
-
-            <div class="form-row">
-                <div class="form-group col-md-6 mb-0">
-                    {{ Studform.company_address   |as_crispy_field }}
-                </div>
-                <div class="form-group col-md-6 mb-0">
-                    {{ Studform.company_number  |as_crispy_field }}
-                </div>
-            </div>
-
-
-
-            <h6>If you are planning to go to college or post grad technincal highschool enter the following:</h6>
-
-
-            <div class="form-row">
-                <div class="form-group col-md-4 mb-0">
-                    {{ Studform.college_attend   |as_crispy_field }}
-                </div>
-                <div class="form-group col-md-4 mb-0">
-                    {{ Studform.college_major  |as_crispy_field }}
-                </div>
-                <div class="form-group col-md-4 mb-0">
-                    {{ Studform.college_year_length  |as_crispy_field }}
-                </div>
-            </div>   
-            
-            
-
-            <div>
-                {{ Studform.college_acceptance_letter  |as_crispy_field }}
-            </div>
-
-
-
-            <h6>If you are planning on going to the Military enter the following:</h6>
-            <div class="form-row">
-                <div class="form-group col-md-4 mb-0">
-                    {{ Studform.military_branch   |as_crispy_field }}
-                </div>
-            </div>
-
-
-
-            <div>
-                {{ Studform.military_letter |as_crispy_field }}
-            </div>
-
-
-
-            <h6>Have you reseved the following:</h6>
-            <div class="form-row">
-                <div class="form-group col-md-3 mb-0">
-                    {{ Studform.A_adams_scholarship   |as_crispy_field }}
-                </div>
-                <div class="form-group col-md-3 mb-0">
-                    {{ Studform.osha_training |as_crispy_field }}
-                </div>
-                <div class="form-group col-md-3 mb-0">
-                    {{ Studform.WTHS_certification   |as_crispy_field }}
-                </div>
-                <div class="form-group col-md-3 mb-0">
-                    {{ Studform.osha_number   |as_crispy_field }}
-                </div>
-            </div>
-            <div class= "row justify-content-center">
-                <button type="submit" class="btn btn-primary" >confirm</button>
-            </div>
+           
         </form>
 
     </div>    
 
 {% endblock %}
+  <!--
+           {{ Stud_form.year_of_graduation |as_crispy_field   }}          
+            {{Stud_form..date_of_birth |as_crispy_field  ]}                 
+            {{Stud_form.technical_program |as_crispy_field }}
+            {{Stud_form.street_address |as_crispy_field }}                
+            {{Stud_form.city |as_crispy_field  }}                           
+            {{Stud_form.apt |as_crispy_field  }}                            
+            {{sStud_form.tate |as_crispy_field    }}                       
+            {{Stud_form.zip_code  |as_crispy_field          }}              
+            {{Stud_form.phone_number  |as_crispy_field    }}               
+            {{Stud_form.company_name  |as_crispy_field   }}                 
+           {{Stud_form.company_address |as_crispy_field  }}            
+            {{Stud_form.company_number |as_crispy_field   }}              
+            {{Stud_form.job_title |as_crispy_field  }}                      
+            {{Stud_form.wage |as_crispy_field    }}                        
+            {{Stud_form.college_acceptance_letter |as_crispy_field    }}   
+           {{ Stud_form.college_attend |as_crispy_field   }}               
+            {{Stud_form.college_major |as_crispy_field  }}                 
+            {{Stud_form.college_year_length |as_crispy_field      }}       
+           {{Stud_form.military_branch  |as_crispy_field     }}           
+            {{Stud_form.military_letter |as_crispy_field }}
+            {{Stud_form.A_adams_scholarship |as_crispy_field   }}          
+            {{Stud_form.technical_certification |as_crispy_field    }}      
+            {{Stud_form.osha_training |as_crispy_field }}                   
+            {{Stud_form.osha_number  |as_crispy_field   }}                  
+           {{ Stud_form.WTHS_certification |as_crispy_field     }}        
+            {{future_plans |as_crispy_field     }}                
+
